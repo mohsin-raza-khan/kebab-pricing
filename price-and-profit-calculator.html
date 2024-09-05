@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کباب/کوفتہ کی قیمت کا تعین</title>
+    <style>
+        body {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            margin: 20px;
+            direction: rtl;
+            text-align: right;
+        }
+        table {
+            width: 70%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: right;
+        }
+        .total {
+            font-weight: bold;
+        }
+        input[type="number"], input[type="text"] {
+            width: 100%;
+        }
+        .rtl-input {
+            direction: rtl;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>کباب/کوفتہ کی قیمت کا تعین</h1>
+
+    <table>
+        <tr>
+            <th>سامان</th>
+            <th>وزن</th>
+            <th>قیمت</th>
+        </tr>
+        <!-- Row inputs for items -->
+        <tr>
+            <td><input type="text" id="item1" class="rtl-input" placeholder="سامان کا نام درج کریں"></td>
+            <td><input type="number" id="weight1" class="rtl-input"></td>
+            <td><input type="number" id="price1" class="rtl-input"></td>
+        </tr>
+        <!-- Repeat the above row for items 2 to 10 -->
+        <tr>
+            <td><input type="text" id="item2" class="rtl-input" placeholder="سامان کا نام درج کریں"></td>
+            <td><input type="number" id="weight2" class="rtl-input"></td>
+            <td><input type="number" id="price2" class="rtl-input"></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="item3" class="rtl-input" placeholder="سامان کا نام درج کریں"></td>
+            <td><input type="number" id="weight3" class="rtl-input"></td>
+            <td><input type="number" id="price3" class="rtl-input"></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="item4" class="rtl-input" placeholder="سامان کا نام درج کریں"></td>
+            <td><input type="number" id="weight4" class="rtl-input"></td>
+            <td><input type="number" id="price4" class="rtl-input"></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="item5" class="rtl-input" placeholder="سامان کا نام درج کریں"></td>
+            <td><input type="number" id="weight5" class="rtl-input"></td>
+            <td><input type="number" id="price5" class="rtl-input"></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="item6" class="rtl-input" placeholder="سامان کا نام درج کریں"></td>
+            <td><input type="number" id="weight6" class="rtl-input"></td>
+            <td><input type="number" id="price6" class="rtl-input"></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="item7" class="rtl-input" placeholder="سامان کا نام درج کریں"></td>
+            <td><input type="number" id="weight7" class="rtl-input"></td>
+            <td><input type="number" id="price7" class="rtl-input"></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="item8" class="rtl-input" placeholder="سامان کا نام درج کریں"></td>
+            <td><input type="number" id="weight8" class="rtl-input"></td>
+            <td><input type="number" id="price8" class="rtl-input"></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="item9" class="rtl-input" placeholder="سامان کا نام درج کریں"></td>
+            <td><input type="number" id="weight9" class="rtl-input"></td>
+            <td><input type="number" id="price9" class="rtl-input"></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="item10" class="rtl-input" placeholder="سامان کا نام درج کریں"></td>
+            <td><input type="number" id="weight10" class="rtl-input"></td>
+            <td><input type="number" id="price10" class="rtl-input"></td>
+        </tr>
+    </table>
+
+    <h2>دیگر اخراجات</h2>
+
+    <table>
+        <tr>
+            <th>اخراجات</th>
+            <th>قیمت</th>
+        </tr>
+        <tr>
+            <td>لیبر</td>
+            <td><input type="number" id="labour" class="rtl-input"></td>
+        </tr>
+        <tr>
+            <td>بجلی</td>
+            <td><input type="number" id="electricity" class="rtl-input"></td>
+        </tr>
+        <tr>
+            <td>گیس</td>
+            <td><input type="number" id="gas" class="rtl-input"></td>
+        </tr>
+        <tr>
+            <td>ٹرانسپورٹ</td>
+            <td><input type="number" id="transport" class="rtl-input"></td>
+        </tr>
+        <tr>
+            <td>دیگر</td>
+            <td><input type="number" id="others" class="rtl-input"></td>
+        </tr>
+    </table>
+
+    <h2>کل کباب تیار</h2>
+    <p>کل کباب تیار: <input type="number" id="totalKebabs" class="rtl-input" placeholder="کل کباب درج کریں"></p>
+
+    <button onclick="calculateTotal()">کل قیمت کا حساب</button>
+
+    <h2>نتائج:</h2>
+    <p>کل قیمت: <span id="totalCost">0</span></p>
+    <p>قیمت فی کباب: <span id="pricePerKebab">0</span></p>
+    <p>قیمت 6 عدد کباب: <span id="price6">0</span></p>
+    <p>قیمت 12 عدد کباب: <span id="price12">0</span></p>
+
+    <h2>منافع کا حساب</h2>
+    <p>25% منافع قیمت 6 عدد: <span id="profit6_25">0</span></p>
+    <p>25% منافع قیمت 12 عدد: <span id="profit12_25">0</span></p>
+
+    <h2>اپنا منافع درج کریں</h2>
+    <p>اپنا منافع (%): <input type="number" id="customProfit" class="rtl-input" placeholder="منافع %"></p>
+
+    <button onclick="calculateCustomProfit()">منافع کا حساب کریں</button>
+
+    <p>کسٹم منافع قیمت 6 عدد: <span id="profit6_custom">0</span></p>
+    <p>کسٹم منافع قیمت 12 عدد: <span id="profit12_custom">0</span></p>
+
+    <script>
+        function calculateTotal() {
+            // Calculate Total 1 (Items prices)
+            let total1 = 0;
+            for (let i = 1; i <= 10; i++) {
+                total1 += parseFloat(document.getElementById('price' + i).value) || 0;
+            }
+
+            // Calculate Total 2 (Other expenses)
+            let total2 = parseFloat(document.getElementById('labour').value) || 0;
+            total2 += parseFloat(document.getElementById('electricity').value) || 0;
+            total2 += parseFloat(document.getElementById('gas').value) || 0;
+            total2 += parseFloat(document.getElementById('transport').value) || 0;
+            total2 += parseFloat(document.getElementById('others').value) || 0;
+
+            // Total cost
+            let totalCost = total1 + total2;
+            document.getElementById('totalCost').innerText = totalCost.toFixed(2);
+
+            // Price per kebab
+            let totalKebabs = parseFloat(document.getElementById('totalKebabs').value) || 1;
+            let pricePerKebab = totalCost / totalKebabs;
+            document.getElementById('pricePerKebab').innerText = pricePerKebab.toFixed(2);
+
+            // Prices for 6 and 12 kebabs
+            let price6 = (pricePerKebab * 6).toFixed(2);
+            let price12 = (pricePerKebab * 12).toFixed(2);
+
+            document.getElementById('price6').innerText = price6;
+            document.getElementById('price12').innerText = price12;
+
+            // Profit calculation
+            document.getElementById('profit6_25').innerText = (price6 * 0.25).toFixed(2);
+            document.getElementById('profit12_25').innerText = (price12 * 0.25).toFixed(2);
+        }
+
+        function calculateCustomProfit() {
+            // Custom Profit Calculation
+            let customProfit = parseFloat(document.getElementById('customProfit').value) || 0;
+            let price6 = parseFloat(document.getElementById('price6').innerText) || 0;
+            let price12 = parseFloat(document.getElementById('price12').innerText) || 0;
+
+            document.getElementById('profit6_custom').innerText = (price6 * (customProfit / 100)).toFixed(2);
+            document.getElementById('profit12_custom').innerText = (price12 * (customProfit / 100)).toFixed(2);
+        }
+    </script>
+
+</body>
+</html>
